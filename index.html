@@ -658,16 +658,20 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(212, 163, 115, 0.4);
         }
-
-        /* 尾頁封底 */
-        .footer-banner {
-            height: 100vh;
-            background: url('https://i.postimg.cc/6Q43FStt/Michelle-Hendrick-Retouched-(37-of-40).jpg') center/cover no-repeat;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+/* 修正後的尾頁封底樣式 */
+.footer-banner {
+    width: 100%;
+    min-height: 80vh; /* 改用 min-height 確保區塊能完整撐開 */
+    background-image: url('https://i.postimg.cc/6Q43FStt/Michelle-Hendrick-Retouched-(37-of-40).jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+}
         .footer-banner::before {
             content: '';
             position: absolute;
