@@ -942,22 +942,50 @@
                     </select>
                 </div>
 
-                <!-- 出席狀態 -->
+              <!-- 出席意願 -->
                 <div class="form-group">
-                    <label class="form-label">是否出席證婚典禮與晚宴<span class="en-label">Will you attend the ceremony and banquet?</span></label>
-                    <select name="entry.184852932" class="form-control" required>
+                    <label class="form-label">能否出席薄扶林伯大尼教堂證婚儀式<span class="en-label">Attendance</span></label>
+                    <select name="entry.1976289255" class="form-control" required>
                         <option value="" disabled selected hidden></option>
-                        <option value="Will attend both">兩者皆出席 / Will attend both</option>
-                        <option value="Ceremony only">僅出席證婚典禮 / Ceremony only</option>
-                        <option value="Banquet only">僅出席晚宴 / Banquet only</option>
-                        <option value="Regretfully decline">未能出席，祝賀新婚 / Regretfully decline</option>
+                        <option value="會">會出席 / Will Attend</option>
+                        <option value="未能出席">未能出席 / Sincerely Decline</option>
                     </select>
                 </div>
 
-                <!-- 提交按鈕 -->
+                <!-- 🍽️ 晚宴 Menu 摺疊面板區塊 -->
+                <div class="form-group" style="margin-bottom: 30px;">
+                    <label class="form-label">晚宴 Menu<span class="en-label">Wedding Menu</span></label>
+                    <details class="transport-details">
+                        <summary class="transport-summary" style="background: rgba(141, 163, 153, 0.08); border-color: rgba(141, 163, 153, 0.2); color: var(--secondary);">📖 展開查看晚宴菜單 / View Menu</summary>
+                        <div class="transport-content" style="background: rgba(255,255,255,0.7); text-align: center;">
+                            <img src="https://i.postimg.cc/MGVR2DJx/White-Minimalistic-Floral-Wedding-Menu.jpg" class="menu-pdf-img" alt="Wedding Dinner Menu PDF">
+                        </div>
+                    </details>
+                </div>
+
+                <!-- 🥗 頭盤選擇 -->
+                <div class="form-group">
+                    <label class="form-label">頭盤選擇<span class="en-label">Appetizer Choice</span></label>
+                    <select name="entry.1563507514" class="form-control" required>
+                        <option value="" disabled selected hidden></option>
+                        <option value="A. Foie Gras Terrine with Port Wine Jelly & Balsamic Pearl 鵝肝凍批配波特酒凍佐黑醋珠">鵝肝凍批配波特酒凍佐黑醋珠 / Foie Gras Terrine with Port Wine Jelly & Balsamic Pearl</option>
+                        <option value="B. Alaska King Crab and Zucchini Roulade with Lemon Gelée and Salmon Roe 阿拉斯加帝王蟹配西葫蘆捲伴檸檬凍及三文魚子">阿拉斯加帝王蟹配西葫蘆捲伴檸檬凍及三文魚子 / Alaska King Crab and Zucchini Roulade with Lemon Gelée and Salmon Roe</option>
+                    </select>
+                </div>
+
+                <!-- 🥩 主菜選擇 -->
+                <div class="form-group">
+                    <label class="form-label">主菜選擇<span class="en-label">Main Course Choice</span></label>
+                    <select name="entry.211444492" class="form-control" required>
+                        <option value="" disabled selected hidden></option>
+                        <option value="A. Grilled Wagyu Beef Striploin with Caramelized Onion, Potato Ball & Red Pepper Coulis 烤和牛西冷配焦糖洋蔥伴薯仔球及紅椒醬">烤和牛西冷配焦糖洋蔥伴薯仔球及紅椒醬 / Grilled Wagyu Beef Striploin with Caramelized Onion, Potato Ball & Red Pepper Coulis</option>
+                        <option value="B. Pan-roasted Chile Seabass with “Fennel Risotto”in Red Wine Sauce 烤智利鱸魚配「茴香燴飯」伴紅酒汁">烤智利鱸魚配「茴香燴飯」伴紅酒汁 / Pan-roasted Chile Seabass with “Fennel Risotto” in Red Wine Sauce</option>
+                    </select>
+                </div>
+
                 <button type="submit" class="btn-submit">
                     確認送出
-                    <span class="en-btn">Submit RSVP</span>
+                    <span class="en-btn">Submit Response</span>
                 </button>
             </form>
         </div>
