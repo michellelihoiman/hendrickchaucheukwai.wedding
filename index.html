@@ -108,17 +108,57 @@
             color: white;
             text-shadow: 0 2px 12px rgba(0,0,0,0.4);
             padding: 140px 24px 90px 24px;
+            overflow: hidden;
         }
+
+        /* 雙圖層封面背景與自動輪播漸變動畫 */
         .hero-bg {
             position: absolute;
-            top:0; left:0; width:100%; height:100%;
-            background: url('https://i.postimg.cc/1XmyRYh4/Michelle-Hendrick-Retouched-(28-of-40).jpg') center/cover no-repeat;
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             z-index: -2;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
         }
+        
+        /* 第一張封面圖 */
+        .hero-bg-1 {
+            background-image: url('https://i.postimg.cc/1XmyRYh4/Michelle-Hendrick-Retouched-(28-of-40).jpg');
+            animation: heroFade1 14s infinite;
+        }
+        
+        /* 第二張封面圖 */
+        .hero-bg-2 {
+            background-image: url('https://i.postimg.cc/rptx2T4N/cd227ae9-2169-4140-bb61-fad3aefecd22.jpg');
+            animation: heroFade2 14s infinite;
+        }
+
+        /* 封面背景流暢循環漸變與微縮放動畫 */
+        @keyframes heroFade1 {
+            0% { opacity: 1; transform: scale(1); }
+            40% { opacity: 1; transform: scale(1.04); }
+            50% { opacity: 0; transform: scale(1.04); }
+            90% { opacity: 0; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes heroFade2 {
+            0% { opacity: 0; transform: scale(1); }
+            40% { opacity: 0; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1); }
+            90% { opacity: 1; transform: scale(1.04); }
+            100% { opacity: 0; transform: scale(1.04); }
+        }
+
         .hero-overlay {
             position: absolute;
-            top:0; left:0; width:100%; height:100%;
-            background: rgba(0,0,0,0.15);
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.2);
             z-index: -2;
         }
         .hero h1 {
@@ -525,17 +565,6 @@
             margin-top: 2px;
         }
 
-        /* 🍽️ 晚宴 Menu PDF 圖片展現摺疊樣式 */
-        .menu-pdf-img {
-            width: 100%;
-            max-width: 480px;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            margin: 10px auto;
-            display: block;
-        }
-
         /* 表單元件 */
         .form-group {
             text-align: left;
@@ -678,9 +707,10 @@
         <a href="#rsvp">出席回函<span class="en-nav">RSVP</span></a>
     </nav>
 
-    <!-- 全螢幕封面首頁 -->
+    <!-- 全螢幕封面首頁 (雙背景漸變自動輪播) -->
     <header class="hero">
-        <div class="hero-bg"></div>
+        <div class="hero-bg hero-bg-1"></div>
+        <div class="hero-bg hero-bg-2"></div>
         <div class="hero-overlay"></div>
         <h1>Michelle & Hendrick</h1>
         <div class="hero-bottom-text">
@@ -768,7 +798,7 @@
                 <!-- 相片五 -->
                 <div class="gallery-item" onclick="openLightbox(4)">
                     <img src="https://i.postimg.cc/G34djpkb/DSC03889.jpg" alt="Michelle & Hendrick Wedding Photo 5" loading="lazy">
-                    </div>
+                </div>
                 <!-- 相片六 -->
                 <div class="gallery-item" onclick="openLightbox(5)">
                     <img src="https://i.postimg.cc/YCZ1h0fw/DSC04341.jpg" alt="Michelle & Hendrick Wedding Photo 6" loading="lazy">
@@ -887,186 +917,160 @@
                         <option value="" disabled selected hidden></option>
                         <option value="Hendrick's fds & colleagues">Hendrick 的朋友及同事 / Hendrick's Friends & Colleagues</option>
                         <option value="Michelle's fds & colleagues">Michelle 的朋友及同事 / Michelle's Friends & Colleagues</option>
-                        <option value="Hendrick's relatives">Hendrick 的親戚 / Hendrick's Relatives</option>
-                        <option value="Michelle's relatives">Michelle 的親戚 / Michelle's Relatives</option>
+                        <option value="Family & Relatives">雙方親屬 / Family & Relatives</option>
                     </select>
                 </div>
 
-                <!-- 出席意願 -->
+                <!-- 出席狀態 -->
                 <div class="form-group">
-                    <label class="form-label">能否出席薄扶林伯大尼教堂證婚儀式<span class="en-label">Attendance</span></label>
-                    <select name="entry.1976289255" class="form-control" required>
+                    <label class="form-label">是否出席證婚典禮與晚宴<span class="en-label">Will you attend the ceremony and banquet?</span></label>
+                    <select name="entry.184852932" class="form-control" required>
                         <option value="" disabled selected hidden></option>
-                        <option value="會">會出席 / Will Attend</option>
-                        <option value="未能出席">未能出席 / Sincerely Decline</option>
+                        <option value="Will attend both">兩者皆出席 / Will attend both</option>
+                        <option value="Ceremony only">僅出席證婚典禮 / Ceremony only</option>
+                        <option value="Banquet only">僅出席晚宴 / Banquet only</option>
+                        <option value="Regretfully decline">未能出席，祝賀新婚 / Regretfully decline</option>
                     </select>
                 </div>
 
-                <!-- 🍽️ 晚宴 Menu 摺疊面板區塊 -->
-                <div class="form-group" style="margin-bottom: 30px;">
-                    <label class="form-label">晚宴 Menu<span class="en-label">Wedding Menu</span></label>
-                    <details class="transport-details">
-                        <summary class="transport-summary" style="background: rgba(141, 163, 153, 0.08); border-color: rgba(141, 163, 153, 0.2); color: var(--secondary);">📖 展開查看晚宴菜單 / View Menu</summary>
-                        <div class="transport-content" style="background: rgba(255,255,255,0.7); text-align: center;">
-                            <img src="https://i.postimg.cc/MGVR2DJx/White-Minimalistic-Floral-Wedding-Menu.jpg" class="menu-pdf-img" alt="Wedding Dinner Menu PDF">
-                        </div>
-                    </details>
-                </div>
-
-                <!-- 🥗 頭盤選擇 -->
-                <div class="form-group">
-                    <label class="form-label">頭盤選擇<span class="en-label">Appetizer Choice</span></label>
-                    <select name="entry.1563507514" class="form-control" required>
-                        <option value="" disabled selected hidden></option>
-                        <option value="A. Foie Gras Terrine with Port Wine Jelly & Balsamic Pearl 鵝肝凍批配波特酒凍佐黑醋珠">鵝肝凍批配波特酒凍佐黑醋珠 / Foie Gras Terrine with Port Wine Jelly & Balsamic Pearl</option>
-                        <option value="B. Alaska King Crab and Zucchini Roulade with Lemon Gelée and Salmon Roe 阿拉斯加帝王蟹配西葫蘆捲伴檸檬凍及三文魚子">阿拉斯加帝王蟹配西葫蘆捲伴檸檬凍及三文魚子 / Alaska King Crab and Zucchini Roulade with Lemon Gelée and Salmon Roe</option>
-                    </select>
-                </div>
-
-                <!-- 🥩 主菜選擇 -->
-                <div class="form-group">
-                    <label class="form-label">主菜選擇<span class="en-label">Main Course Choice</span></label>
-                    <select name="entry.211444492" class="form-control" required>
-                        <option value="" disabled selected hidden></option>
-                        <option value="A. Grilled Wagyu Beef Striploin with Caramelized Onion, Potato Ball & Red Pepper Coulis 烤和牛西冷配焦糖洋蔥伴薯仔球及紅椒醬">烤和牛西冷配焦糖洋蔥伴薯仔球及紅椒醬 / Grilled Wagyu Beef Striploin with Caramelized Onion, Potato Ball & Red Pepper Coulis</option>
-                        <option value="B. Pan-roasted Chile Seabass with “Fennel Risotto”in Red Wine Sauce 烤智利鱸魚配「茴香燴飯」伴紅酒汁">烤智利鱸魚配「茴香燴飯」伴紅酒汁 / Pan-roasted Chile Seabass with “Fennel Risotto” in Red Wine Sauce</option>
-                    </select>
-                </div>
-
+                <!-- 提交按鈕 -->
                 <button type="submit" class="btn-submit">
                     確認送出
-                    <span class="en-btn">Submit Response</span>
+                    <span class="en-btn">Submit RSVP</span>
                 </button>
             </form>
         </div>
     </section>
-<script>
-    let submitted = false;
 
-    // 1. 倒數計時器邏輯
-    function updateCountdown() {
-        const weddingDate = new Date('November 28, 2026 16:30:00').getTime();
-        const now = new Date().getTime();
-        const gap = weddingDate - now;
+    <!-- 尾頁封底 -->
+    <footer class="footer-banner">
+        <div class="footer-logo">Michelle & Hendrick</div>
+    </footer>
 
-        const second = 1000;
-        const minute = second * 60;
-        const hour = minute * 60;
-        const day = hour * 24;
+    <!-- JavaScript 互動效果 -->
+    <script>
+        let submitted = false;
 
-        if (gap > 0) {
-            const days = Math.floor(gap / day);
-            const hours = Math.floor((gap % day) / hour);
-            const minutes = Math.floor((gap % hour) / minute);
-            const seconds = Math.floor((gap % minute) / second);
+        // 1. 倒數計時器邏輯
+        function updateCountdown() {
+            const weddingDate = new Date('November 28, 2026 16:30:00').getTime();
+            const now = new Date().getTime();
+            const gap = weddingDate - now;
 
-            document.getElementById('days').innerText = String(days).padStart(2, '0');
-            document.getElementById('hours').innerText = String(hours).padStart(2, '0');
-            document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
-            document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+            const second = 1000;
+            const minute = second * 60;
+            const hour = minute * 60;
+            const day = hour * 24;
+
+            if (gap > 0) {
+                const days = Math.floor(gap / day);
+                const hours = Math.floor((gap % day) / hour);
+                const minutes = Math.floor((gap % hour) / minute);
+                const seconds = Math.floor((gap % minute) / second);
+
+                document.getElementById('days').innerText = String(days).padStart(2, '0');
+                document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+                document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+            }
         }
-    }
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
 
-    // 2. 浪漫暖色粒子背景 Canvas
-    const canvas = document.getElementById('canvas-bg');
-    const ctx = canvas.getContext('2d');
-    let particles = [];
+        // 2. 浪漫暖色粒子背景 Canvas
+        const canvas = document.getElementById('canvas-bg');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
 
-    function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    class Particle {
-        constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 3 + 1;
-            this.speedY = Math.random() * 0.5 - 0.25;
-            this.speedX = Math.random() * 0.5 - 0.25;
-            this.opacity = Math.random() * 0.5 + 0.2;
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
         }
-        update() {
-            this.y += this.speedY;
-            this.x += this.speedX;
-            if (this.y < 0) this.y = canvas.height;
-            if (this.y > canvas.height) this.y = 0;
-            if (this.x < 0) this.x = canvas.width;
-            if (this.x > canvas.width) this.x = 0;
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 3 + 1;
+                this.speedY = Math.random() * 0.5 - 0.25;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.opacity = Math.random() * 0.5 + 0.2;
+            }
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                if (this.y < 0) this.y = canvas.height;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.x > canvas.width) this.x = 0;
+            }
+            draw() {
+                ctx.fillStyle = `rgba(212, 163, 115, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
         }
-        draw() {
-            ctx.fillStyle = `rgba(212, 163, 115, ${this.opacity})`;
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fill();
+
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < 40; i++) {
+                particles.push(new Particle());
+            }
         }
-    }
+        initParticles();
 
-    function initParticles() {
-        particles = [];
-        for (let i = 0; i < 40; i++) {
-            particles.push(new Particle());
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
         }
-    }
-    initParticles();
+        animateParticles();
 
-    function animateParticles() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach(p => {
-            p.update();
-            p.draw();
-        });
-        requestAnimationFrame(animateParticles);
-    }
-    animateParticles();
+        // 3. Photo Gallery 燈箱 (Lightbox) 邏輯
+        const galleryImages = [
+            "https://i.postimg.cc/GpT78xL9/Pri-Vision-Michelle-Hendrick-68.jpg",
+            "https://i.postimg.cc/R0Yk20Fd/Blue-White-Simple-Invitation.png",
+            "https://i.postimg.cc/269yLDkZ/Michelle-Hendrick-Retouched-(20-of-40).jpg",
+            "https://i.postimg.cc/3rFWPNkN/DSC04570.jpg",
+            "https://i.postimg.cc/G34djpkb/DSC03889.jpg",
+            "https://i.postimg.cc/YCZ1h0fw/DSC04341.jpg"
+        ];
+        let currentImageIndex = 0;
 
-    // 3. Photo Gallery 燈箱 (Lightbox) 修正版邏輯
-    const galleryImages = [
-        "https://i.postimg.cc/GpT78xL9/Pri-Vision-Michelle-Hendrick-68.jpg",
-        "https://i.postimg.cc/R0Yk20Fd/Blue-White-Simple-Invitation.png",
-        "https://i.postimg.cc/269yLDkZ/Michelle-Hendrick-Retouched-(20-of-40).jpg",
-        "https://i.postimg.cc/3rFWPNkN/DSC04570.jpg",
-        "https://i.postimg.cc/G34djpkb/DSC03889.jpg",
-        "https://i.postimg.cc/YCZ1h0fw/DSC04341.jpg"
-    ];
-    let currentImageIndex = 0;
-
-    // 修正函式名稱為 openLightbox (與 HTML 中的 onclick 一致)
-    function openLightbox(index) {
-        currentImageIndex = index;
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        lightboxImg.src = galleryImages[currentImageIndex];
-        lightbox.classList.add('active');
-    }
-
-    function closeLightbox() {
-        const lightbox = document.getElementById('lightbox');
-        lightbox.classList.remove('active');
-    }
-
-    function changeImage(direction) {
-        currentImageIndex += direction;
-        if (currentImageIndex < 0) {
-            currentImageIndex = galleryImages.length - 1;
-        } else if (currentImageIndex >= galleryImages.length) {
-            currentImageIndex = 0;
+        function openLightbox(index) {
+            currentImageIndex = index;
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = galleryImages[currentImageIndex];
+            lightbox.classList.add('active');
         }
-        document.getElementById('lightbox-img').src = galleryImages[currentImageIndex];
-    }
 
-    function handleLightboxClick(event) {
-        // 點擊黑色背景時自動關閉燈箱
-        if (event.target.id === 'lightbox') {
-            closeLightbox();
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
         }
-    }
-</script>
 
+        function changeImage(direction) {
+            currentImageIndex += direction;
+            if (currentImageIndex < 0) {
+                currentImageIndex = galleryImages.length - 1;
+            } else if (currentImageIndex >= galleryImages.length) {
+                currentImageIndex = 0;
+            }
+            document.getElementById('lightbox-img').src = galleryImages[currentImageIndex];
+        }
 
+        function handleLightboxClick(event) {
+            if (event.target.id === 'lightbox') {
+                closeLightbox();
+            }
+        }
+    </script>
 </body>
 </html>
