@@ -111,7 +111,7 @@
             overflow: hidden;
         }
 
-        /* 雙圖層封面背景與自動輪播漸變動畫 */
+       /* 雙圖層封面背景與自動輪播漸變動畫 (10秒總循環 / 每張約 5 秒) */
         .hero-bg {
             position: absolute;
             top: 0; 
@@ -129,13 +129,13 @@
         /* 第一張封面圖 */
         .hero-bg-1 {
             background-image: url('https://i.postimg.cc/1XmyRYh4/Michelle-Hendrick-Retouched-(28-of-40).jpg');
-            animation: heroFade1 14s infinite;
+            animation: heroFade1 10s infinite;
         }
         
         /* 第二張封面圖 */
         .hero-bg-2 {
-            background-image: url('https://i.postimg.cc/rptx2T4N/cd227ae9-2169-4140-bb61-fad3aefecd22.jpg');
-            animation: heroFade2 14s infinite;
+            background-image: url('https://i.postimg.cc/269yLDkZ/Michelle-Hendrick-Retouched-(20-of-40).jpg');
+            animation: heroFade2 10s infinite;
         }
 
         /* 封面背景流暢循環漸變與微縮放動畫 */
@@ -154,7 +154,7 @@
             90% { opacity: 1; transform: scale(1.04); }
             100% { opacity: 0; transform: scale(1.04); }
         }
-
+        
         .hero-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
