@@ -111,7 +111,7 @@
             overflow: hidden;
         }
 
-        /* 雙圖層封面背景與自動輪播漸變動畫 */
+       /* 雙圖層封面背景與自動輪播漸變動畫 (10秒總循環 / 每張約 5 秒) */
         .hero-bg {
             position: absolute;
             top: 0; 
@@ -125,15 +125,20 @@
             opacity: 0;
             transition: opacity 1.5s ease-in-out;
         }
+        
+        /* 第一張封面圖 */
         .hero-bg-1 {
             background-image: url('https://i.postimg.cc/1XmyRYh4/Michelle-Hendrick-Retouched-(28-of-40).jpg');
             animation: heroFade1 10s infinite;
         }
+        
+        /* 第二張封面圖 */
         .hero-bg-2 {
             background-image: url('https://i.postimg.cc/rptx2T4N/cd227ae9-2169-4140-bb61-fad3aefecd22.jpg');
             animation: heroFade2 10s infinite;
         }
 
+        /* 封面背景流暢循環漸變與微縮放動畫 */
         @keyframes heroFade1 {
             0% { opacity: 1; transform: scale(1); }
             40% { opacity: 1; transform: scale(1.04); }
@@ -202,6 +207,7 @@
             margin-bottom: 40px;
         }
         
+        /* 雙語標題樣式 */
         .title-container {
             margin-bottom: 30px;
         }
@@ -558,7 +564,24 @@
             line-height: 1.5;
             margin-top: 2px;
         }
+  /* 🍽️ 晚宴 Menu PDF 圖片展現摺疊樣式 */
 
+        .menu-pdf-img {
+
+            width: 100%;
+
+            max-width: 480px;
+
+            height: auto;
+
+            border-radius: 8px;
+
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+
+            margin: 10px auto;
+
+            display: block;
+        }
         /* 表單元件 */
         .form-group {
             text-align: left;
@@ -635,21 +658,20 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(212, 163, 115, 0.4);
         }
-
-        /* 尾頁封底樣式 */
-        .footer-banner {
-            width: 100%;
-            min-height: 80vh;
-            background-image: url('https://i.postimg.cc/6Q43FStt/Michelle-Hendrick-Retouched-(37-of-40).jpg');
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 60px 20px;
-        }
+/* 修正後的尾頁封底樣式 */
+.footer-banner {
+    width: 100%;
+    min-height: 80vh; /* 改用 min-height 確保區塊能完整撐開 */
+    background-image: url('https://i.postimg.cc/6Q43FStt/Michelle-Hendrick-Retouched-(37-of-40).jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+}
         .footer-banner::before {
             content: '';
             position: absolute;
@@ -706,7 +728,7 @@
         <a href="#rsvp">出席回函<span class="en-nav">RSVP</span></a>
     </nav>
 
-    <!-- 全螢幕封面首頁 -->
+    <!-- 全螢幕封面首頁 (雙背景漸變自動輪播) -->
     <header class="hero">
         <div class="hero-bg hero-bg-1"></div>
         <div class="hero-bg hero-bg-2"></div>
@@ -715,7 +737,7 @@
         <div class="hero-bottom-text">
             <p class="tagline">Love matters.</p>
             <p class="quote">
-                「世界那麼大，你我幸運地發現了彼此的可「愛」之處。」
+                「世界那麼大，你我欲幸運地發現了彼此的可「愛」之處。」
                 <span class="en-quote">"In this big big world, how lucky we are to have found each other’s secret cute buttons and pressed ‘love mode’ together."</span>
             </p>
         </div>
@@ -770,6 +792,7 @@
                 <span class="en-share">Share the joy with us</span>
             </div>
 
+            <!-- 分割美學線 -->
             <div class="gallery-divider"></div>
 
             <!-- 📸 Photo Gallery 區塊 -->
@@ -777,26 +800,33 @@
             <div class="gallery-subtitle">sneak peek of our photos</div>
             
             <div class="gallery-scroll-container">
+                <!-- 相片一 -->
                 <div class="gallery-item" onclick="openLightbox(0)">
-                    <img src="https://i.postimg.cc/GpT78xL9/Pri-Vision-Michelle-Hendrick-68.jpg" alt="Photo 1" loading="lazy">
+                    <img src="https://i.postimg.cc/GpT78xL9/Pri-Vision-Michelle-Hendrick-68.jpg" alt="Michelle & Hendrick Wedding Photo 1" loading="lazy">
                 </div>
+                <!-- 相片二 -->
                 <div class="gallery-item" onclick="openLightbox(1)">
-                    <img src="https://i.postimg.cc/R0Yk20Fd/Blue-White-Simple-Invitation.png" alt="Photo 2" loading="lazy">
+                    <img src="https://i.postimg.cc/R0Yk20Fd/Blue-White-Simple-Invitation.png" alt="Michelle & Hendrick Wedding Photo 2" loading="lazy">
                 </div>
+                <!-- 相片三 -->
                 <div class="gallery-item" onclick="openLightbox(2)">
-                    <img src="https://i.postimg.cc/269yLDkZ/Michelle-Hendrick-Retouched-(20-of-40).jpg" alt="Photo 3" loading="lazy">
+                    <img src="https://i.postimg.cc/269yLDkZ/Michelle-Hendrick-Retouched-(20-of-40).jpg" alt="Michelle & Hendrick Wedding Photo 3" loading="lazy">
                 </div>
+                <!-- 相片四 -->
                 <div class="gallery-item" onclick="openLightbox(3)">
-                    <img src="https://i.postimg.cc/3rFWPNkN/DSC04570.jpg" alt="Photo 4" loading="lazy">
+                    <img src="https://i.postimg.cc/3rFWPNkN/DSC04570.jpg" alt="Michelle & Hendrick Wedding Photo 4" loading="lazy">
                 </div>
+                <!-- 相片五 -->
                 <div class="gallery-item" onclick="openLightbox(4)">
-                    <img src="https://i.postimg.cc/G34djpkb/DSC03889.jpg" alt="Photo 5" loading="lazy">
+                    <img src="https://i.postimg.cc/G34djpkb/DSC03889.jpg" alt="Michelle & Hendrick Wedding Photo 5" loading="lazy">
                 </div>
+                <!-- 相片六 -->
                 <div class="gallery-item" onclick="openLightbox(5)">
-                    <img src="https://i.postimg.cc/SKr2hKKB/DSC04121.jpg" alt="Photo 6" loading="lazy">
+                    <img src="https://i.postimg.cc/SKr2hKKB/DSC04121.jpg" alt="Michelle & Hendrick Wedding Photo 5" loading="lazy">             
                 </div>
+                <!-- 相片七 -->
                 <div class="gallery-item" onclick="openLightbox(6)">
-                    <img src="https://i.postimg.cc/YCZ1h0fw/DSC04341.jpg" alt="Photo 7" loading="lazy">
+                    <img src="https://i.postimg.cc/YCZ1h0fw/DSC04341.jpg" alt="Michelle & Hendrick Wedding Photo 6" loading="lazy">
                 </div>
             </div>
         </div>
@@ -820,6 +850,7 @@
                 <div class="section-subtitle">婚禮詳情</div>
             </div>
 
+            <!-- 中英雙語婚禮日期橫幅 -->
             <div class="wedding-date-banner">
                 📅 2026年11月28日 (星期六)
                 <span class="en-date">Saturday, November 28, 2026</span>
@@ -880,7 +911,7 @@
         </div>
     </section>
 
-    <!-- 出席回函 RSVP 區塊 (補回截斷的表單) -->
+    <!-- 智能表單回函區塊 -->
     <section class="section" id="rsvp">
         <div class="v-card">
             <div class="title-container">
@@ -888,103 +919,176 @@
                 <div class="section-subtitle">出席回函</div>
             </div>
 
-            <!-- 💡 提示：若需連接 Google Forms 或 Formspree，請將 action 填入對應的 URL -->
-            <form id="rsvp-form" action="#" method="POST" onsubmit="handleFormSubmit(event)">
+            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {window.location='#thanks'; alert(language === 'en' ? 'Thank you for your response! See you at our wedding.' : '謝謝您的回覆！我們婚禮見。');}"></iframe>
+            
+            <form action="https://docs.google.com/forms/d/e/1FAIpQLSd6jlYYE3XGlN53iMmjB1T2kOeO6wzTI_Gpc56e_eDPRcZCkQ/formResponse" method="post" target="hidden_iframe" onsubmit="submitted=true;">
+                
+                <!-- 姓名 -->
                 <div class="form-group">
-                    <label class="form-label">
-                        您的姓名 <span class="en-label">Guest Name</span>
-                    </label>
-                    <input type="text" class="form-control" name="guest_name" required placeholder="請輸入您的全名">
+                    <label class="form-label">姓名<span class="en-label">Full Name</span></label>
+                    <input type="text" name="entry.395874548" class="form-control" required placeholder="">
                 </div>
 
+                <!-- 電郵 -->
                 <div class="form-group">
-                    <label class="form-label">
-                        聯絡電話 / WhatsApp <span class="en-label">Phone Number</span>
-                    </label>
-                    <input type="tel" class="form-control" name="phone" required placeholder="請輸入聯絡電話">
+                    <label class="form-label">電郵地址<span class="en-label">Email Address</span></label>
+                    <input type="email" name="entry.134417591" class="form-control" required placeholder="">
                 </div>
 
+                <!-- 身份 -->
                 <div class="form-group">
-                    <label class="form-label">
-                        是否出席 <span class="en-label">Attending Status</span>
-                    </label>
-                    <select class="form-control" name="attendance" required>
-                        <option value="" disabled selected>請選擇出席狀況</option>
-                        <option value="yes">開心出席 (Will Attend)</option>
-                        <option value="no">因事不克出席 (Regretfully Can't Attend)</option>
+                    <label class="form-label">您是哪一方的親友<span class="en-label">Relationship</span></label>
+                    <select name="entry.163538105" class="form-control" required>
+                        <option value="" disabled selected hidden></option>
+                        <option value="Hendrick's fds & colleagues">Hendrick 的朋友及同事 / Hendrick's Friends & Colleagues</option>
+                        <option value="Michelle's fds & colleagues">Michelle 的朋友及同事 / Michelle's Friends & Colleagues</option>
+                        <option value="Family & Relatives">雙方親屬 / Family & Relatives</option>
                     </select>
                 </div>
 
+              <!-- 出席意願 -->
                 <div class="form-group">
-                    <label class="form-label">
-                        乘搭大會接駁車 (金鐘 ➔ 數碼港) <span class="en-label">Shuttle Bus Reservation</span>
-                    </label>
-                    <select class="form-control" name="shuttle">
-                        <option value="none" selected>不需要 (Not Needed)</option>
-                        <option value="1">需要 1 位 (1 Person)</option>
-                        <option value="2">需要 2 位 (2 Persons)</option>
+                    <label class="form-label">能否出席薄扶林伯大尼教堂證婚儀式<span class="en-label">Attendance</span></label>
+                    <select name="entry.1976289255" class="form-control" required>
+                        <option value="" disabled selected hidden></option>
+                        <option value="會">會出席 / Will Attend</option>
+                        <option value="未能出席">未能出席 / Sincerely Decline</option>
                     </select>
                 </div>
 
+                <!-- 🍽️ 晚宴 Menu 摺疊面板區塊 -->
+                <div class="form-group" style="margin-bottom: 30px;">
+                    <label class="form-label">晚宴 Menu<span class="en-label">Wedding Menu</span></label>
+                    <details class="transport-details">
+                        <summary class="transport-summary" style="background: rgba(141, 163, 153, 0.08); border-color: rgba(141, 163, 153, 0.2); color: var(--secondary);">📖 展開查看晚宴菜單 / View Menu</summary>
+                        <div class="transport-content" style="background: rgba(255,255,255,0.7); text-align: center;">
+                            <img src="https://i.postimg.cc/MGVR2DJx/White-Minimalistic-Floral-Wedding-Menu.jpg" class="menu-pdf-img" alt="Wedding Dinner Menu PDF">
+                        </div>
+                    </details>
+                </div>
+
+                <!-- 🥗 頭盤選擇 -->
                 <div class="form-group">
-                    <label class="form-label">
-                        祝福語 / 飲食忌口 <span class="en-label">Wishes & Dietary Requirements</span>
-                    </label>
-                    <textarea class="form-control" name="message" rows="3" placeholder="如有素食需求或對新人想說的話，歡迎在此留言"></textarea>
+                    <label class="form-label">頭盤選擇<span class="en-label">Appetizer Choice</span></label>
+                    <select name="entry.1563507514" class="form-control" required>
+                        <option value="" disabled selected hidden></option>
+                        <option value="A. Foie Gras Terrine with Port Wine Jelly & Balsamic Pearl 鵝肝凍批配波特酒凍佐黑醋珠">鵝肝凍批配波特酒凍佐黑醋珠 / Foie Gras Terrine with Port Wine Jelly & Balsamic Pearl</option>
+                        <option value="B. Alaska King Crab and Zucchini Roulade with Lemon Gelée and Salmon Roe 阿拉斯加帝王蟹配西葫蘆捲伴檸檬凍及三文魚子">阿拉斯加帝王蟹配西葫蘆捲伴檸檬凍及三文魚子 / Alaska King Crab and Zucchini Roulade with Lemon Gelée and Salmon Roe</option>
+                    </select>
+                </div>
+
+                <!-- 🥩 主菜選擇 -->
+                <div class="form-group">
+                    <label class="form-label">主菜選擇<span class="en-label">Main Course Choice</span></label>
+                    <select name="entry.211444492" class="form-control" required>
+                        <option value="" disabled selected hidden></option>
+                        <option value="A. Grilled Wagyu Beef Striploin with Caramelized Onion, Potato Ball & Red Pepper Coulis 烤和牛西冷配焦糖洋蔥伴薯仔球及紅椒醬">烤和牛西冷配焦糖洋蔥伴薯仔球及紅椒醬 / Grilled Wagyu Beef Striploin with Caramelized Onion, Potato Ball & Red Pepper Coulis</option>
+                        <option value="B. Pan-roasted Chile Seabass with “Fennel Risotto”in Red Wine Sauce 烤智利鱸魚配「茴香燴飯」伴紅酒汁">烤智利鱸魚配「茴香燴飯」伴紅酒汁 / Pan-roasted Chile Seabass with “Fennel Risotto” in Red Wine Sauce</option>
+                    </select>
                 </div>
 
                 <button type="submit" class="btn-submit">
                     確認送出
-                    <span class="en-btn">Confirm & Submit</span>
+                    <span class="en-btn">Submit Response</span>
                 </button>
             </form>
         </div>
     </section>
 
-    <!-- 尾頁封底 -->
-    <div class="footer-banner">
-        <div class="footer-logo">Michelle & Hendrick</div>
-    </div>
-
-    <!-- JavaScript 互動腳本 (倒數、光箱、表單處理) -->
+    <!-- JavaScript 互動效果 -->
     <script>
-        // 1. 倒數計時器邏輯 (設定目標日期：2026年11月28日 16:30)
-        const weddingDate = new Date('2026-11-28T16:30:00').getTime();
+        let submitted = false;
 
+        // 1. 倒數計時器邏輯
         function updateCountdown() {
+            const weddingDate = new Date('November 28, 2026 16:30:00').getTime();
             const now = new Date().getTime();
-            const distance = weddingDate - now;
+            const gap = weddingDate - now;
 
-            if (distance < 0) {
-                document.getElementById('days').innerText = '00';
-                document.getElementById('hours').innerText = '00';
-                document.getElementById('minutes').innerText = '00';
-                document.getElementById('seconds').innerText = '00';
-                return;
+            const second = 1000;
+            const minute = second * 60;
+            const hour = minute * 60;
+            const day = hour * 24;
+
+            if (gap > 0) {
+                const days = Math.floor(gap / day);
+                const hours = Math.floor((gap % day) / hour);
+                const minutes = Math.floor((gap % hour) / minute);
+                const seconds = Math.floor((gap % minute) / second);
+
+                document.getElementById('days').innerText = String(days).padStart(2, '0');
+                document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+                document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
             }
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById('days').innerText = String(days).padStart(2, '0');
-            document.getElementById('hours').innerText = String(hours).padStart(2, '0');
-            document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
-            document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
         }
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // 2. Photo Gallery Lightbox 邏輯
+        // 2. 浪漫暖色粒子背景 Canvas
+        const canvas = document.getElementById('canvas-bg');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 3 + 1;
+                this.speedY = Math.random() * 0.5 - 0.25;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.opacity = Math.random() * 0.5 + 0.2;
+            }
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                if (this.y < 0) this.y = canvas.height;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.x > canvas.width) this.x = 0;
+            }
+            draw() {
+                ctx.fillStyle = `rgba(212, 163, 115, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < 40; i++) {
+                particles.push(new Particle());
+            }
+        }
+        initParticles();
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // 3. Photo Gallery 燈箱 (Lightbox) 邏輯
         const galleryImages = [
             "https://i.postimg.cc/GpT78xL9/Pri-Vision-Michelle-Hendrick-68.jpg",
             "https://i.postimg.cc/R0Yk20Fd/Blue-White-Simple-Invitation.png",
             "https://i.postimg.cc/269yLDkZ/Michelle-Hendrick-Retouched-(20-of-40).jpg",
             "https://i.postimg.cc/3rFWPNkN/DSC04570.jpg",
             "https://i.postimg.cc/G34djpkb/DSC03889.jpg",
-            "https://i.postimg.cc/SKr2hKKB/DSC04121.jpg",
-            "https://i.postimg.cc/YCZ1h0fw/DSC04341.jpg"
+            "https://i.postimg.cc/YCZ1h0fw/DSC04341.jpg",
+            "https://i.postimg.cc/SKr2hKKB/DSC04121.jpg"
         ];
         let currentImageIndex = 0;
 
@@ -997,7 +1101,8 @@
         }
 
         function closeLightbox() {
-            document.getElementById('lightbox').classList.remove('active');
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
         }
 
         function changeImage(direction) {
@@ -1015,17 +1120,6 @@
                 closeLightbox();
             }
         }
-
-        // 3. 表單提交事件處理 (可依需求改為連線至 Google Apps Script 或 Formspree)
-        function handleFormSubmit(event) {
-            event.preventDefault(); // 防止預設跳轉
-            
-            // 模擬成功送出提示
-            alert('感謝您的填寫！您的出席回函已成功送出。');
-            document.getElementById('rsvp-form').reset();
-        }
     </script>
-</body>
-</html>
 </body>
 </html>
