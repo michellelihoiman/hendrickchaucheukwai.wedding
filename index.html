@@ -911,87 +911,90 @@
         </div>
     </section>
 
-  <!-- 智能表單回函區塊 -->
-    <section class="section" id="rsvp">
-        <div class="v-card">
-            <div class="title-container">
-                <h2 class="section-title">RSVP</h2>
-                <div class="section-subtitle">出席回函</div>
+ <!-- 智能表單回函區塊 -->
+<section class="section" id="rsvp">
+    <div class="v-card">
+        <div class="title-container">
+            <h2 class="section-title">RSVP</h2>
+            <div class="section-subtitle">出席回函</div>
+        </div>
+
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { alert('謝謝您的回覆！我們婚禮見。\nThank you for your response! See you at our wedding.'); }"></iframe>
+
+        <form action="https://docs.google.com/forms/d/e/1FAIpQLSd6jlYYE3XGlN53iMmjB1T2kOeO6wzTI_Gpc56e_eDPRcZCkQ/formResponse" method="post" target="hidden_iframe" onsubmit="submitted=true;">
+
+            <!-- 姓名 NAME -->
+            <div class="form-group">
+                <label class="form-label">姓名<span class="en-label">Full Name</span></label>
+                <input type="text" name="entry.395874548" class="form-control" required placeholder="">
             </div>
 
-            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { alert('謝謝您的回覆！我們婚禮見。\nThank you for your response! See you at our wedding.'); }"></iframe>
-            
-            <form action="https://docs.google.com/forms/d/e/1FAIpQLSd6jlYYE3XGlN53iMmjB1T2kOeO6wzTI_Gpc56e_eDPRcZCkQ/formResponse" method="post" target="hidden_iframe" onsubmit="submitted=true;">
-                
-                <!-- 姓名 -->
-                <div class="form-group">
-                    <label class="form-label">姓名<span class="en-label">Full Name</span></label>
-                    <input type="text" name="entry.395874548" class="form-control" required placeholder="">
-                </div>
+            <!-- 與新人關係 RELATIONSHIP -->
+            <div class="form-group">
+                <label class="form-label">與新人關係 RELATIONSHIP<span class="en-label">Relationship</span></label>
+                <select name="entry.163538105" class="form-control" required>
+                    <option value="" disabled selected hidden></option>
+                    <option value="Hendrick男家親戚">Hendrick男家親戚 / Hendrick's Family</option>
+                    <option value="Hendrick's Friends & Colleagues">Hendrick's Friends & Colleagues</option>
+                    <option value="Michelle's Friends & Colleagues">Michelle's Friends & Colleagues</option>
+                    <option value="Michelle女家親戚">Michelle女家親戚</option>
+                </select>
+            </div>
 
-                <!-- 身份 -->
-                <div class="form-group">
-                    <label class="form-label">您是哪一方的親友<span class="en-label">Relationship</span></label>
-                    <select name="entry.163538105" class="form-control" required>
-                        <option value="" disabled selected hidden></option>
-                        <option value="Hendrick男家親戚">Hendrick男家親戚 / Hendrick's Family</option>
-                        <option value="Hendrick's fds & colleagues">Hendrick 的朋友及同事 / Hendrick's Friends & Colleagues</option>
-                        <option value="Michelle's fds & colleagues">Michelle 的朋友及同事 / Michelle's Friends & Colleagues</option>
-                        <option value="Family & Relatives">雙方親屬 / Family & Relatives</option>
-                    </select>
-                </div>
+            <!-- 會否出席薄扶林伯大尼教堂證婚儀式 Can you attend the wedding ceremony at Bethanie Chapel -->
+            <div class="form-group">
+                <label class="form-label">會否出席薄扶林伯大尼教堂證婚儀式 Can you attend the wedding ceremony at Bethanie Chapel<span class="en-label">Attendance</span></label>
+                <select name="entry.1976289255" class="form-control" required>
+                    <option value="" disabled selected hidden></option>
+                    <option value="會/ will attend">會出席 / Will Attend</option>
+                    <option value="未能出席/ Sincerely Decline">未能出席 / Sincerely Decline</option>
+                </select>
+            </div>
 
-                <!-- 出席意願 -->
-                <div class="form-group">
-                    <label class="form-label">能否出席薄扶林伯大尼教堂證婚儀式<span class="en-label">Attendance</span></label>
-                    <select name="entry.1976289255" class="form-control" required>
-                        <option value="" disabled selected hidden></option>
-                        <option value="會/ will attend">會出席 / Will Attend</option>
-                        <option value="未能出席">未能出席 / Sincerely Decline</option>
-                    </select>
-                </div>
+            <!-- 🍽️ 晚宴 Menu 摺疊面板區塊 -->
+            <div class="form-group" style="margin-bottom: 30px;">
+                <label class="form-label">晚宴 Menu<span class="en-label">Wedding Menu</span></label>
+                <details class="transport-details">
+                    <summary class="transport-summary" style="background: rgba(141, 163, 153, 0.08); border-color: rgba(141, 163, 153, 0.2); color: var(--secondary);">📖 展開查看晚宴菜單 / View Menu</summary>
+                    <div class="transport-content" style="background: rgba(255,255,255,0.7); text-align: center;">
+                        <img src="https://i.postimg.cc/MGVR2DJx/White-Minimalistic-Floral-Wedding-Menu.jpg" class="menu-pdf-img" alt="Wedding Dinner Menu PDF">
+                    </div>
+                </details>
+            </div>
 
-                <!-- 🍽️ 晚宴 Menu 摺疊面板區塊 -->
-                <div class="form-group" style="margin-bottom: 30px;">
-                    <label class="form-label">晚宴 Menu<span class="en-label">Wedding Menu</span></label>
-                    <details class="transport-details">
-                        <summary class="transport-summary" style="background: rgba(141, 163, 153, 0.08); border-color: rgba(141, 163, 153, 0.2); color: var(--secondary);">📖 展開查看晚宴菜單 / View Menu</summary>
-                        <div class="transport-content" style="background: rgba(255,255,255,0.7); text-align: center;">
-                            <img src="https://i.postimg.cc/MGVR2DJx/White-Minimalistic-Floral-Wedding-Menu.jpg" class="menu-pdf-img" alt="Wedding Dinner Menu PDF">
-                        </div>
-                    </details>
-                </div>
+            <!-- 🥗 頭盤選擇 -->
+            <div class="form-group">
+                <label class="form-label">頭盤選擇<span class="en-label">Appetizer Choice</span></label>
+                <select name="entry.1563507514" class="form-control" required>
+                    <option value="" disabled selected hidden></option>
+                    <option value="A. Foie Gras Terrine with Port Wine Jelly & Balsamic Pearl 鵝肝凍批配波特酒凍佐黑醋珠">鵝肝凍批配波特酒凍佐黑醋珠 / Foie Gras Terrine with Port Wine Jelly & Balsamic Pearl</option>
+                    <option value="B. Alaska King Crab and Zucchini Roulade with Lemon Gelée and Salmon Roe 阿拉斯加帝王蟹配西葫蘆捲伴檸檬凍及三文魚子">阿拉斯加帝王蟹配西葫蘆捲伴檸檬凍及三文魚子 / Alaska King Crab and Zucchini Roulade with Lemon Gelée and Salmon Roe</option>
+                </select>
+            </div>
 
-                <!-- 🥗 頭盤選擇 -->
-                <div class="form-group">
-                    <label class="form-label">頭盤選擇<span class="en-label">Appetizer Choice</span></label>
-                    <select name="entry.1563507514" class="form-control" required>
-                        <option value="" disabled selected hidden></option>
-                        <option value="A. Foie Gras Terrine with Port Wine Jelly & Balsamic Pearl 鵝肝凍批配波特酒凍佐黑醋珠">鵝肝凍批配波特酒凍佐黑醋珠 / Foie Gras Terrine with Port Wine Jelly & Balsamic Pearl</option>
-                        <option value="B. Alaska King Crab and Zucchini Roulade with Lemon Gelée and Salmon Roe 阿拉斯加帝王蟹配西葫蘆捲伴檸檬凍及三文魚子">阿拉斯加帝王蟹配西葫蘆捲伴檸檬凍及三文魚子 / Alaska King Crab and Zucchini Roulade with Lemon Gelée and Salmon Roe</option>
-                    </select>
-                </div>
+            <!-- 🥩 主菜選擇 -->
+            <div class="form-group">
+                <label class="form-label">主菜選擇<span class="en-label">Main Course Choice</span></label>
+                <select name="entry.211444492" class="form-control" required>
+                    <option value="" disabled selected hidden></option>
+                    <option value="A. Grilled Wagyu Beef Striploin with Caramelized Onion, Potato Ball & Red Pepper Coulis 烤和牛西冷配焦糖洋蔥伴薯仔球及紅椒醬">烤和牛西冷配焦糖洋蔥伴薯仔球及紅椒醬 / Grilled Wagyu Beef Striploin with Caramelized Onion, Potato Ball & Red Pepper Coulis</option>
+                    <option value="B. Pan-roasted Chile Seabass with “Fennel Risotto” in Red Wine Sauce 烤智利鱸魚配「茴香燴飯」伴紅酒汁">烤智利鱸魚配「茴香燴飯」伴紅酒汁 / Pan-roasted Chile Seabass with “Fennel Risotto” in Red Wine Sauce</option>
+                </select>
+            </div>
 
-                <!-- 🥩 主菜選擇 -->
-                <div class="form-group">
-                    <label class="form-label">主菜選擇<span class="en-label">Main Course Choice</span></label>
-                    <select name="entry.211444492" class="form-control" required>
-                        <option value="" disabled selected hidden></option>
-                        <option value="A. Grilled Wagyu Beef Striploin with Caramelized Onion, Potato Ball & Red Pepper Coulis 烤和牛西冷配焦糖洋蔥伴薯仔球及紅椒醬">烤和牛西冷配焦糖洋蔥伴薯仔球及紅椒醬 / Grilled Wagyu Beef Striploin with Caramelized Onion, Potato Ball & Red Pepper Coulis</option>
-                        <option value="B. Pan-roasted Chile Seabass with “Fennel Risotto”in Red Wine Sauce 烤智利鱸魚配「茴香燴飯」伴紅酒汁">烤智利鱸魚配「茴香燴飯」伴紅酒汁 / Pan-roasted Chile Seabass with “Fennel Risotto” in Red Wine Sauce</option>
-                    </select>
-                </div>
+            <button type="submit" class="btn-submit">
+                確認送出
+                <span class="en-btn">Submit Response</span>
+            </button>
+        </form>
+    </div>
+</section>
 
-                <button type="submit" class="btn-submit">
-                    確認送出
-                    <span class="en-btn">Submit Response</span>
-                </button>
-            </form>
-        </div>
-    </section>
-
-    <!-- JavaScript 互動效果 -->
-    <script>
+<!-- JavaScript 互動效果 -->
+<script>
+    let submitted = false;
+</script>
+    
         let submitted = false;
 
         // 1. 倒數計時器邏輯
