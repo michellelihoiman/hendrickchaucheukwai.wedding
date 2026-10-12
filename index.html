@@ -919,7 +919,7 @@
                 <div class="section-subtitle">出席回函</div>
             </div>
 
-            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {window.location='#thanks'; alert(language === 'en' ? 'Thank you for your response! See you at our wedding.' : '謝謝您的回覆！我們婚禮見。');}"></iframe>
+            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { alert('謝謝您的回覆！我們婚禮見。\nThank you for your response! See you at our wedding.'); }"></iframe>
             
             <form action="https://docs.google.com/forms/d/e/1FAIpQLSd6jlYYE3XGlN53iMmjB1T2kOeO6wzTI_Gpc56e_eDPRcZCkQ/formResponse" method="post" target="hidden_iframe" onsubmit="submitted=true;">
                 
