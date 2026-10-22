@@ -66,7 +66,7 @@
       max-width: 1100px;
       margin: 0 auto;
       display: flex;
-      justify: space-between;
+      justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
     }
@@ -240,7 +240,7 @@
 
     /* Container for Main Content */
     .main-container {
-      max-width: 900px;
+      max-width: 950px;
       margin: 0 auto;
       padding: 4rem 1.5rem;
     }
@@ -421,19 +421,44 @@
       transform: scale(1.02);
     }
 
-    /* Photo Gallery & Lightbox */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1.2rem;
+    /* Photo Gallery Horizontal Carousel */
+    .gallery-carousel-wrapper {
+      position: relative;
       margin-bottom: 4rem;
     }
 
+    .gallery-carousel {
+      display: flex;
+      gap: 1.5rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding: 1rem 0.5rem 2rem 0.5rem;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* Custom Scrollbar */
+    .gallery-carousel::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .gallery-carousel::-webkit-scrollbar-track {
+      background: rgba(232, 226, 217, 0.5);
+      border-radius: 10px;
+    }
+
+    .gallery-carousel::-webkit-scrollbar-thumb {
+      background: var(--warm-sun);
+      border-radius: 10px;
+    }
+
     .gallery-item {
+      flex: 0 0 280px;
+      scroll-snap-align: center;
       position: relative;
       border-radius: 12px;
       overflow: hidden;
-      aspect-ratio: 4/5;
+      height: 380px;
       box-shadow: var(--shadow-soft);
       cursor: pointer;
     }
@@ -476,6 +501,7 @@
       padding: 3rem;
       box-shadow: var(--shadow-soft);
       border: 1px solid var(--border-color);
+      transition: all 0.5s ease;
     }
 
     .form-group {
@@ -547,6 +573,34 @@
       transform: translateY(-2px);
     }
 
+    /* Thank You State Card */
+    .thank-you-card {
+      display: none;
+      text-align: center;
+      padding: 3rem 1rem;
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    .thank-you-card i {
+      font-size: 3.5rem;
+      color: var(--warm-sun);
+      margin-bottom: 1.5rem;
+    }
+
+    .thank-you-card h3 {
+      font-size: 2.2rem;
+      color: var(--text-dark);
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .thank-you-card p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+    }
+
     /* Modal / Lightbox Overlay */
     .lightbox-modal {
       display: none;
@@ -585,26 +639,6 @@
       color: var(--warm-sun);
     }
 
-    /* Toast Notification */
-    .toast {
-      display: none;
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: var(--sage-green);
-      color: #fff;
-      padding: 1rem 1.8rem;
-      border-radius: 8px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-      z-index: 3000;
-      animation: slideUp 0.4s ease;
-    }
-
-    @keyframes slideUp {
-      from { transform: translateY(100%); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(15px); }
       to { opacity: 1; transform: translateY(0); }
@@ -620,13 +654,14 @@
       .nav-links { display: none; }
       .vcard { padding: 1.5rem; }
       .form-container { padding: 1.8rem 1.2rem; }
+      .gallery-item { flex: 0 0 240px; height: 320px; }
     }
   </style>
 </head>
 <body>
 
   <!-- Hidden Iframe for Silent Google Form Submission -->
-  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { showSuccessToast(); }"></iframe>
+  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { handleFormSubmitted(); }"></iframe>
 
   <!-- Glassmorphism Navigation Bar -->
   <nav class="nav-glass">
@@ -697,7 +732,7 @@
         <!-- Ceremony Card -->
         <div class="vcard">
           <div class="vcard-header">
-            <div class="vcard-icon"><i class="fa-solid me-church"></i><i class="fa-solid fa-church"></i></div>
+            <div class="vcard-icon"><i class="fa-solid fa-church"></i></div>
             <div class="vcard-title">證婚典禮 Ceremony</div>
           </div>
           <div class="vcard-body">
@@ -758,41 +793,43 @@
       </div>
     </section>
 
-    <!-- Photo Gallery Section -->
+    <!-- Photo Gallery Section (Horizontal Carousel) -->
     <section id="gallery">
       <div class="section-title">
         <h2>Photo Gallery</h2>
         <p>溫馨時刻</p>
       </div>
 
-      <div class="gallery-grid">
-        <div class="gallery-item" onclick="openLightbox('https://i.postimg.cc/GpT78xL9/Pri-Vision-Michelle-Hendrick-68.jpg')">
-          <img src="https://i.postimg.cc/GpT78xL9/Pri-Vision-Michelle-Hendrick-68.jpg" alt="Michelle & Hendrick Wedding Photo 1" loading="lazy">
-          <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-        </div>
-        <div class="gallery-item" onclick="openLightbox('https://i.postimg.cc/R0Yk20Fd/Blue-White-Simple-Invitation.png')">
-          <img src="https://i.postimg.cc/R0Yk20Fd/Blue-White-Simple-Invitation.png" alt="Michelle & Hendrick Wedding Photo 2" loading="lazy">
-          <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-        </div>
-        <div class="gallery-item" onclick="openLightbox('https://i.postimg.cc/269yLDkZ/Michelle-Hendrick-Retouched-(20-of-40).jpg')">
-          <img src="https://i.postimg.cc/269yLDkZ/Michelle-Hendrick-Retouched-(20-of-40).jpg" alt="Michelle & Hendrick Wedding Photo 3" loading="lazy">
-          <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-        </div>
-        <div class="gallery-item" onclick="openLightbox('https://i.postimg.cc/3rFWPNkN/DSC04570.jpg')">
-          <img src="https://i.postimg.cc/3rFWPNkN/DSC04570.jpg" alt="Michelle & Hendrick Wedding Photo 4" loading="lazy">
-          <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-        </div>
-        <div class="gallery-item" onclick="openLightbox('https://i.postimg.cc/G34djpkb/DSC03889.jpg')">
-          <img src="https://i.postimg.cc/G34djpkb/DSC03889.jpg" alt="Michelle & Hendrick Wedding Photo 5" loading="lazy">
-          <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-        </div>
-        <div class="gallery-item" onclick="openLightbox('https://i.postimg.cc/SKr2hKKB/DSC04121.jpg')">
-          <img src="https://i.postimg.cc/SKr2hKKB/DSC04121.jpg" alt="Michelle & Hendrick Wedding Photo 6" loading="lazy">
-          <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-        </div>
-        <div class="gallery-item" onclick="openLightbox('https://i.postimg.cc/YCZ1h0fw/DSC04341.jpg')">
-          <img src="https://i.postimg.cc/YCZ1h0fw/DSC04341.jpg" alt="Michelle & Hendrick Wedding Photo 7" loading="lazy">
-          <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      <div class="gallery-carousel-wrapper">
+        <div class="gallery-carousel">
+          <div class="gallery-item" onclick="openLightbox('https://i.postimg.cc/GpT78xL9/Pri-Vision-Michelle-Hendrick-68.jpg')">
+            <img src="https://i.postimg.cc/GpT78xL9/Pri-Vision-Michelle-Hendrick-68.jpg" alt="Michelle & Hendrick Wedding Photo 1" loading="lazy">
+            <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('https://i.postimg.cc/R0Yk20Fd/Blue-White-Simple-Invitation.png')">
+            <img src="https://i.postimg.cc/R0Yk20Fd/Blue-White-Simple-Invitation.png" alt="Michelle & Hendrick Wedding Photo 2" loading="lazy">
+            <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('https://i.postimg.cc/269yLDkZ/Michelle-Hendrick-Retouched-(20-of-40).jpg')">
+            <img src="https://i.postimg.cc/269yLDkZ/Michelle-Hendrick-Retouched-(20-of-40).jpg" alt="Michelle & Hendrick Wedding Photo 3" loading="lazy">
+            <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('https://i.postimg.cc/3rFWPNkN/DSC04570.jpg')">
+            <img src="https://i.postimg.cc/3rFWPNkN/DSC04570.jpg" alt="Michelle & Hendrick Wedding Photo 4" loading="lazy">
+            <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('https://i.postimg.cc/G34djpkb/DSC03889.jpg')">
+            <img src="https://i.postimg.cc/G34djpkb/DSC03889.jpg" alt="Michelle & Hendrick Wedding Photo 5" loading="lazy">
+            <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('https://i.postimg.cc/SKr2hKKB/DSC04121.jpg')">
+            <img src="https://i.postimg.cc/SKr2hKKB/DSC04121.jpg" alt="Michelle & Hendrick Wedding Photo 6" loading="lazy">
+            <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('https://i.postimg.cc/YCZ1h0fw/DSC04341.jpg')">
+            <img src="https://i.postimg.cc/YCZ1h0fw/DSC04341.jpg" alt="Michelle & Hendrick Wedding Photo 7" loading="lazy">
+            <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
         </div>
       </div>
     </section>
@@ -804,7 +841,9 @@
         <p>出席回函</p>
       </div>
 
-      <div class="form-container">
+      <div class="form-container" id="formContainer">
+        
+        <!-- Active RSVP Form -->
         <form id="weddingForm" action="https://docs.google.com/forms/d/e/1FAIpQLSd6jlYYE3XGlN53iMmjB1T2kOeO6wzTI_Gpc56e_eDPRcZCkQ/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
           
           <!-- Guest Name -->
@@ -837,6 +876,7 @@
             <select id="entry_1976289255" name="entry.1976289255" class="form-control" required>
               <option value="" disabled selected>請選擇出席意願 / Select Attendance</option>
               <option value="會 (will attend)">會 (will attend)</option>
+              <option value="未能出席 (sincerely decline)">未能出席 (sincerely decline)</option>
             </select>
           </div>
 
@@ -866,6 +906,7 @@
             <select id="entry_1563507514" name="entry.1563507514" class="form-control" required>
               <option value="" disabled selected>請選擇頭盤 / Select Appetizer</option>
               <option value="A. 鵝肝凍批配波特酒凍佐黑醋珠Foie Gras Terrine with Port Wine Jelly &amp; Balsamic Pearl">A. 鵝肝凍批配波特酒凍佐黑醋珠Foie Gras Terrine with Port Wine Jelly &amp; Balsamic Pearl</option>
+              <option value="B. 阿拉斯加帝王蟹配西葫蘆捲伴檸檬凍及三文魚子Alaska King Crab and Zucchini Roulade with Lemon Gelée and Salmon Roe">B. 阿拉斯加帝王蟹配西葫蘆捲伴檸檬凍及三文魚子Alaska King Crab and Zucchini Roulade with Lemon Gelée and Salmon Roe</option>
             </select>
           </div>
 
@@ -877,11 +918,20 @@
             <select id="entry_211444492" name="entry.211444492" class="form-control" required>
               <option value="" disabled selected>請選擇主菜 / Select Main Course</option>
               <option value="A. 烤和牛西冷配焦糖洋蔥伴薯仔球及紅椒醬Grilled Wagyu Beef Striploin with Caramelized Onion, Potato Ball &amp; Red Pepper Coulis">A. 烤和牛西冷配焦糖洋蔥伴薯仔球及紅椒醬Grilled Wagyu Beef Striploin with Caramelized Onion, Potato Ball &amp; Red Pepper Coulis</option>
+              <option value="B. 烤智利鱸魚配「茴香燴飯」伴紅酒汁Pan-roasted Chile Seabass with “Fennel Risotto” in Red Wine Sauce">B. 烤智利鱸魚配「茴香燴飯」伴紅酒汁Pan-roasted Chile Seabass with “Fennel Risotto” in Red Wine Sauce</option>
             </select>
           </div>
 
           <button type="submit" class="btn-submit">送出回函 SUBMIT RSVP</button>
         </form>
+
+        <!-- Thank You State Page -->
+        <div class="thank-you-card" id="thankYouCard">
+          <i class="fa-regular fa-heart"></i>
+          <h3>Thank You!</h3>
+          <p>Received your reply. See you soon!</p>
+        </div>
+
       </div>
     </section>
 
@@ -891,11 +941,6 @@
   <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox()">
     <span class="lightbox-close">&times;</span>
     <img class="lightbox-content" id="lightboxImg" alt="Lightbox View">
-  </div>
-
-  <!-- Success Toast -->
-  <div class="toast" id="successToast">
-    <i class="fa-solid fa-check-circle" style="margin-right: 8px;"></i> 回函已順利送出，感謝您的祝福！
   </div>
 
   <script>
@@ -969,14 +1014,13 @@
       document.getElementById('lightboxModal').style.display = 'none';
     }
 
-    // Success Toast
-    function showSuccessToast() {
-      var toast = document.getElementById('successToast');
-      toast.style.display = 'block';
-      document.getElementById('weddingForm').reset();
-      setTimeout(function() {
-        toast.style.display = 'none';
-      }, 5000);
+    // Handle Form Submitted Transition
+    function handleFormSubmitted() {
+      var form = document.getElementById('weddingForm');
+      var thankYou = document.getElementById('thankYouCard');
+      
+      form.style.display = 'none';
+      thankYou.style.display = 'block';
     }
   </script>
 </body>
