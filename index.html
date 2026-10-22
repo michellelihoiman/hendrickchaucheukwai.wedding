@@ -443,7 +443,7 @@
       padding: 1rem 0.5rem;
       width: 100%;
       -webkit-overflow-scrolling: touch;
-      scrollbar-width: none; /* Hide scrollbar for clean arrow navigation */
+      scrollbar-width: none;
     }
 
     .gallery-slider::-webkit-scrollbar {
@@ -930,11 +930,11 @@
           <!-- Appetizer Choice -->
           <div class="form-group">
             <label class="form-label" for="entry_1563507514">
-              APPETIZER 頭盤 *
+              Appetizer 頭盤 *
             </label>
             <select id="entry_1563507514" name="entry.1563507514" class="form-control" required>
               <option value="" disabled selected>請選擇頭盤 / Select Appetizer</option>
-              <option value="A. 鵝肝凍批配波特酒凍佐黑醋珠Foie Gras Terrine with Port Wine Jelly &amp; Balsamic Pearl">A. 鵝肝凍批配波特酒凍佐黑醋珠Foie Gras Terrine with Port Wine Jelly &amp; Balsamic Pearl</option>
+              <option value="A. 鵝肝凍批配波特酒凍佐黑醋珠Foie Gras Terrine with Port Wine Jelly & Balsamic Pearl">A. 鵝肝凍批配波特酒凍佐黑醋珠Foie Gras Terrine with Port Wine Jelly & Balsamic Pearl</option>
               <option value="B. 阿拉斯加帝王蟹配西葫蘆捲伴檸檬凍及三文魚子Alaska King Crab and Zucchini Roulade with Lemon Gelée and Salmon Roe">B. 阿拉斯加帝王蟹配西葫蘆捲伴檸檬凍及三文魚子Alaska King Crab and Zucchini Roulade with Lemon Gelée and Salmon Roe</option>
             </select>
           </div>
@@ -942,11 +942,11 @@
           <!-- Main Course Choice -->
           <div class="form-group">
             <label class="form-label" for="entry_211444492">
-              MAIN 主菜 *
+              Main 主菜 *
             </label>
             <select id="entry_211444492" name="entry.211444492" class="form-control" required>
               <option value="" disabled selected>請選擇主菜 / Select Main Course</option>
-              <option value="A. 烤和牛西冷配焦糖洋蔥伴薯仔球及紅椒醬Grilled Wagyu Beef Striploin with Caramelized Onion, Potato Ball &amp; Red Pepper Coulis">A. 烤和牛西冷配焦糖洋蔥伴薯仔球及紅椒醬Grilled Wagyu Beef Striploin with Caramelized Onion, Potato Ball &amp; Red Pepper Coulis</option>
+              <option value="A. 烤和牛西冷配焦糖洋蔥伴薯仔球及紅椒醬Grilled Wagyu Beef Striploin with Caramelized Onion, Potato Ball & Red Pepper Coulis">A. 烤和牛西冷配焦糖洋蔥伴薯仔球及紅椒醬Grilled Wagyu Beef Striploin with Caramelized Onion, Potato Ball & Red Pepper Coulis</option>
               <option value="B. 烤智利鱸魚配「茴香燴飯」伴紅酒汁Pan-roasted Chile Seabass with “Fennel Risotto” in Red Wine Sauce">B. 烤智利鱸魚配「茴香燴飯」伴紅酒汁Pan-roasted Chile Seabass with “Fennel Risotto” in Red Wine Sauce</option>
             </select>
           </div>
@@ -1006,7 +1006,7 @@
 
       var days = Math.floor(distance / (1000 * 60 * 60 * 24));
       var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 % (1000 * 60 * 60))) / (1000 * 60));
       var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
       document.getElementById('days').innerText = days < 10 ? '0' + days : days;
