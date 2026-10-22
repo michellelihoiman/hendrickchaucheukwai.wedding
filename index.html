@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Michelle & Hendrick Wedding Invitation</title>
   
-  <!-- Fonts -->
+  <!-- Fonts: Cormorant Garamond & Noto Serif TC -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Noto+Serif+TC:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -72,6 +72,7 @@
     }
 
     .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
       font-size: 1.5rem;
       font-weight: 500;
       letter-spacing: 2px;
@@ -168,6 +169,7 @@
     }
 
     .hero-title {
+      font-family: 'Cormorant Garamond', serif;
       font-size: 3.8rem;
       font-weight: 400;
       letter-spacing: 4px;
@@ -176,6 +178,7 @@
     }
 
     .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
       font-size: 1.5rem;
       font-weight: 300;
       letter-spacing: 6px;
@@ -232,7 +235,8 @@
     }
 
     .timer-label {
-      font-size: 0.7rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 1.5px;
       color: var(--text-muted);
@@ -251,6 +255,7 @@
     }
 
     .section-title h2 {
+      font-family: 'Cormorant Garamond', serif;
       font-size: 2.5rem;
       color: var(--warm-sun);
       letter-spacing: 2px;
@@ -421,35 +426,28 @@
       transform: scale(1.02);
     }
 
-    /* Photo Gallery Horizontal Carousel */
-    .gallery-carousel-wrapper {
+    /* Photo Gallery Horizontal Slider with Arrow Buttons */
+    .gallery-slider-wrapper {
       position: relative;
       margin-bottom: 4rem;
+      display: flex;
+      align-items: center;
     }
 
-    .gallery-carousel {
+    .gallery-slider {
       display: flex;
       gap: 1.5rem;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
-      padding: 1rem 0.5rem 2rem 0.5rem;
+      padding: 1rem 0.5rem;
+      width: 100%;
       -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; /* Hide scrollbar for clean arrow navigation */
     }
 
-    /* Custom Scrollbar */
-    .gallery-carousel::-webkit-scrollbar {
-      height: 6px;
-    }
-
-    .gallery-carousel::-webkit-scrollbar-track {
-      background: rgba(232, 226, 217, 0.5);
-      border-radius: 10px;
-    }
-
-    .gallery-carousel::-webkit-scrollbar-thumb {
-      background: var(--warm-sun);
-      border-radius: 10px;
+    .gallery-slider::-webkit-scrollbar {
+      display: none;
     }
 
     .gallery-item {
@@ -494,6 +492,40 @@
       opacity: 1;
     }
 
+    /* Slider Nav Arrows */
+    .slider-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--border-color);
+      color: var(--warm-sun);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    }
+
+    .slider-arrow:hover {
+      background: var(--warm-sun);
+      color: #fff;
+      transform: translateY(-50%) scale(1.08);
+    }
+
+    .slider-arrow.prev {
+      left: -20px;
+    }
+
+    .slider-arrow.next {
+      right: -20px;
+    }
+
     /* Form Styles */
     .form-container {
       background: var(--card-bg);
@@ -514,15 +546,6 @@
       font-weight: 500;
       color: var(--text-dark);
       font-size: 0.95rem;
-    }
-
-    .form-label span.en-label {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      letter-spacing: 1px;
-      margin-left: 6px;
-      text-transform: uppercase;
     }
 
     .form-control {
@@ -655,6 +678,8 @@
       .vcard { padding: 1.5rem; }
       .form-container { padding: 1.8rem 1.2rem; }
       .gallery-item { flex: 0 0 240px; height: 320px; }
+      .slider-arrow.prev { left: -10px; }
+      .slider-arrow.next { right: -10px; }
     }
   </style>
 </head>
@@ -666,6 +691,7 @@
   <!-- Glassmorphism Navigation Bar -->
   <nav class="nav-glass">
     <div class="nav-container">
+      <a href="#" class="nav-logo">M & H</a>
       <ul class="nav-links">
         <li><a href="#about">關於我們 ABOUT</a></li>
         <li><a href="#details">婚禮詳情 DETAILS</a></li>
@@ -792,15 +818,17 @@
       </div>
     </section>
 
-    <!-- Photo Gallery Section (Horizontal Carousel) -->
+    <!-- Photo Gallery Section (Horizontal Slider with Arrows) -->
     <section id="gallery">
       <div class="section-title">
         <h2>Photo Gallery</h2>
-        <p>sneakpeak</p>
+        <p>溫馨時刻</p>
       </div>
 
-      <div class="gallery-carousel-wrapper">
-        <div class="gallery-carousel">
+      <div class="gallery-slider-wrapper">
+        <button class="slider-arrow prev" onclick="scrollGallery(-300)"><i class="fa-solid fa-chevron-left"></i></button>
+        
+        <div class="gallery-slider" id="gallerySlider">
           <div class="gallery-item" onclick="openLightbox('https://i.postimg.cc/GpT78xL9/Pri-Vision-Michelle-Hendrick-68.jpg')">
             <img src="https://i.postimg.cc/GpT78xL9/Pri-Vision-Michelle-Hendrick-68.jpg" alt="Michelle & Hendrick Wedding Photo 1" loading="lazy">
             <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
@@ -830,6 +858,8 @@
             <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
           </div>
         </div>
+
+        <button class="slider-arrow next" onclick="scrollGallery(300)"><i class="fa-solid fa-chevron-right"></i></button>
       </div>
     </section>
 
@@ -848,7 +878,7 @@
           <!-- Guest Name -->
           <div class="form-group">
             <label class="form-label" for="entry_395874548">
-              姓名 <span class="en-label">NAME</span> *
+              姓名 NAME *
             </label>
             <input type="text" id="entry_395874548" name="entry.395874548" class="form-control" placeholder="請輸入您的姓名 / Full Name" required>
           </div>
@@ -856,7 +886,7 @@
           <!-- Relationship -->
           <div class="form-group">
             <label class="form-label" for="entry_163538105">
-              與新人關係 <span class="en-label">RELATIONSHIP WITH COUPLE</span> *
+              與新人關係 RELATIONSHIP WITH COUPLE *
             </label>
             <select id="entry_163538105" name="entry.163538105" class="form-control" required>
               <option value="" disabled selected>請選擇關係 / Select Relationship</option>
@@ -870,7 +900,7 @@
           <!-- Ceremony Attendance -->
           <div class="form-group">
             <label class="form-label" for="entry_1976289255">
-              會否出席薄扶林伯大尼教堂證婚儀式 <span class="en-label">WILL YOU ATTEND THE WEDDING CEREMONY AT BETHANIE CHAPEL</span> *
+              會否出席薄扶林伯大尼教堂證婚儀式 WILL YOU ATTEND THE WEDDING CEREMONY AT BETHANIE CHAPEL *
             </label>
             <select id="entry_1976289255" name="entry.1976289255" class="form-control" required>
               <option value="" disabled selected>請選擇出席意願 / Select Attendance</option>
@@ -879,17 +909,17 @@
             </select>
           </div>
 
-          <!-- Banquet Menu PDF Accordion Preview -->
+          <!-- Dinner Menu PDF Accordion Preview -->
           <div class="form-group">
             <div class="accordion">
               <div class="accordion-item">
                 <button type="button" class="accordion-header" onclick="toggleAccordion(this)">
-                  <span><i class="fa-solid fa-utensils" style="margin-right: 8px;"></i> 檢視晚宴菜單 VIEW Banquet MENU</span>
+                  <span><i class="fa-solid fa-utensils" style="margin-right: 8px;"></i> 檢視晚宴菜單 VIEW DINNER MENU</span>
                   <i class="fa-solid fa-chevron-down"></i>
                 </button>
                 <div class="accordion-content">
                   <div class="menu-preview-container">
-                    <img src="https://i.postimg.cc/MGVR2DJx/White-Minimalistic-Floral-Wedding-Menu.jpg" alt="Banquet Menu" class="menu-preview-img" onclick="openLightbox(this.src)">
+                    <img src="https://i.postimg.cc/MGVR2DJx/White-Minimalistic-Floral-Wedding-Menu.jpg" alt="Dinner Menu" class="menu-preview-img" onclick="openLightbox(this.src)">
                     <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 6px;">（點擊菜單圖片可放大檢視）</p>
                   </div>
                 </div>
@@ -900,7 +930,7 @@
           <!-- Appetizer Choice -->
           <div class="form-group">
             <label class="form-label" for="entry_1563507514">
-              頭盤選擇 <span class="en-label">APPETIZER CHOICE</span> *
+              APPETIZER 頭盤 *
             </label>
             <select id="entry_1563507514" name="entry.1563507514" class="form-control" required>
               <option value="" disabled selected>請選擇頭盤 / Select Appetizer</option>
@@ -912,7 +942,7 @@
           <!-- Main Course Choice -->
           <div class="form-group">
             <label class="form-label" for="entry_211444492">
-              主菜選擇 <span class="en-label">MAIN COURSE CHOICE</span> *
+              MAIN 主菜 *
             </label>
             <select id="entry_211444492" name="entry.211444492" class="form-control" required>
               <option value="" disabled selected>請選擇主菜 / Select Main Course</option>
@@ -987,6 +1017,12 @@
 
     setInterval(updateCountdown, 1000);
     updateCountdown();
+
+    // Gallery Slider Arrow Control
+    function scrollGallery(distance) {
+      var slider = document.getElementById('gallerySlider');
+      slider.scrollBy({ left: distance, behavior: 'smooth' });
+    }
 
     // Accordion Toggle
     function toggleAccordion(button) {
