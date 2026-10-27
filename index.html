@@ -251,7 +251,7 @@
 
     .section-title {
       text-align: center;
-      margin-bottom: 3rem;
+      margin-bottom: 2.5rem;
     }
 
     .section-title h2 {
@@ -262,11 +262,20 @@
       margin-bottom: 0.5rem;
     }
 
-    .section-title p {
+    .section-title p.sub-heading {
       font-size: 0.9rem;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--sage-green);
+      margin-bottom: 1rem;
+    }
+
+    .section-title p.intro-text {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 750px;
+      margin: 0 auto;
+      line-height: 1.8;
     }
 
     /* V-Card Details Layout */
@@ -326,7 +335,7 @@
       color: var(--text-dark);
     }
 
-    /* Color Dress Code Tag */
+    /* Dress Code Tag */
     .dress-code-box {
       display: inline-block;
       background: rgba(141, 163, 153, 0.12);
@@ -713,7 +722,7 @@
       <p class="hero-slogan">
         「世界那麼大，你我欲幸運地發現了彼此的可『愛』之處。」<br>
         <span style="font-size: 0.9em; opacity: 0.85;" class="font-serif-en">
-          "In this big big world, we were lucky enough to find the lovable sides of one another."
+          "In this big big world, how lucky that we found each other's sweet spots and clicked instantly."
         </span>
       </p>
 
@@ -749,7 +758,13 @@
     <section id="details">
       <div class="section-title">
         <h2>Wedding Details</h2>
-        <p>婚禮詳情</p>
+        <p class="sub-heading">婚禮詳情</p>
+        <p class="intro-text">
+          「一路走來，慶幸有您，我地嘅生活先會充滿住無數歡笑同美好回憶! 依家誠邀您一齊分享呢份喜悅，舉杯迎接即我地將展開嘅幸福旅程!」<br>
+          <span class="font-serif-en" style="font-size: 0.95em; opacity: 0.9; display: inline-block; margin-top: 4px;">
+            “Life is better, brighter, and far more fun because of wonderful people like you. Join us for laughter, happy tears, and a toast to the adventure that awaits!”
+          </span>
+        </p>
       </div>
 
       <div class="vcard-container">
@@ -761,11 +776,11 @@
             <div class="vcard-title">證婚典禮 Ceremony</div>
           </div>
           <div class="vcard-body">
-            <p><strong>日期 Date：</strong>2026年11月28日 (星期六)</p>
-            <p><strong>時間 Time：</strong>4:15 PM 恭候 Reception | 4:30 PM 儀式開始</p>
-            <p><strong>地點 Location：</strong><span class="no-wrap">薄扶林伯大尼教堂</span> <span class="no-wrap">Bethanie Chapel, Pok Fu Lam</span></p>
+            <p><strong>日期 DATE：</strong>2026年11月28日 (星期六)</p>
+            <p><strong>時間 TIME：</strong>4:15 PM 恭候 Reception | 4:30 PM 儀式開始</p>
+            <p><strong>地點 LOCATION：</strong><span class="no-wrap">薄扶林伯大尼小禮堂</span> <span class="no-wrap">Bethanie Chapel, Pok Fu Lam</span></p>
 
-            <!-- Transportation Accordion -->
+            <!-- Detailed Transportation Accordion -->
             <div class="accordion">
               <div class="accordion-item">
                 <button class="accordion-header" onclick="toggleAccordion(this)">
@@ -773,9 +788,13 @@
                   <i class="fa-solid fa-chevron-down"></i>
                 </button>
                 <div class="accordion-content">
-                  <p style="font-size: 0.9rem; margin-top: 0.5rem;">
-                    <strong>小巴/巴士：</strong>可於 <span class="no-wrap">中環交易廣場</span> 或 <span class="no-wrap">金鐘站</span> 搭乘前往薄扶林方向之巴士。<br>
-                    <strong>計程車：</strong>請告知司機前往 <span class="no-wrap">薄扶林道139號</span> <span class="no-wrap">伯大尼專上視覺藝術學院</span>。
+                  <p style="font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.8;">
+                    <strong>城巴 / 巴士號碼：</strong><br>
+                    • 經薄扶林道巴士線：<span class="no-wrap">4, 7, 37A, 40, 71, 90B, 91, 970, 970X, 973</span>（於 <span class="no-wrap">薄扶林水塘道 / 伯大尼</span> 站下車）<br>
+                    <strong>專線小巴號碼：</strong><br>
+                    • 小巴線：<span class="no-wrap">22, 22S, 23, 31</span>（於 <span class="no-wrap">伯大尼專上視覺藝術學院</span> 門前下車）<br>
+                    <strong>計程車 / 自駕：</strong><br>
+                    • 請告知司機前往 <span class="no-wrap">薄扶林道139號</span>（<span class="no-wrap">伯大尼專上視覺藝術學院</span>）
                   </p>
                 </div>
               </div>
@@ -787,31 +806,15 @@
         <div class="vcard">
           <div class="vcard-header">
             <div class="vcard-icon"><i class="fa-solid fa-utensils"></i></div>
-            <div class="vcard-title">婚宴晚宴 Banquet</div>
+            <div class="vcard-title">婚禮晚宴 Banquet</div>
           </div>
           <div class="vcard-body">
-            <p><strong>時間 Time：</strong>6:30 PM 恭候 Reception | 7:30 PM 晚宴開始</p>
-            <p><strong>地點 Location：</strong><span class="no-wrap">香港數碼港艾美酒店, Umami</span></p>
+            <p><strong>時間 TIME：</strong>6:30 PM 恭候 Reception | 7:30 PM 晚宴開始</p>
+            <p><strong>地點 LOCATION：</strong><span class="no-wrap">香港數碼港艾美酒店, Umami</span></p>
             <p>
-              <strong>Color Dress Code: </strong> 
+              <strong>Dress Code：</strong> 
               <span class="dress-code-box">大地色系 (綠色 / 啡色 / 燕麥色)</span>
             </p>
-
-            <!-- Transportation Accordion -->
-            <div class="accordion">
-              <div class="accordion-item">
-                <button class="accordion-header" onclick="toggleAccordion(this)">
-                  <span><i class="fa-solid fa-location-dot" style="margin-right: 8px;"></i> 交通與接駁指引 Location & Transport</span>
-                  <i class="fa-solid fa-chevron-down"></i>
-                </button>
-                <div class="accordion-content">
-                  <p style="font-size: 0.9rem; margin-top: 0.5rem;">
-                    <strong>穿梭巴士：</strong>酒店提供來往 <span class="no-wrap">中環香港站</span> 之免費穿梭巴士。<br>
-                    <strong>自駕泊車：</strong>酒店設有賓客專屬代客泊車服務。
-                  </p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -822,7 +825,7 @@
     <section id="gallery">
       <div class="section-title">
         <h2>Photo Gallery</h2>
-        <p>Let's sneak peek of our photos :) </p>
+        <p class="sub-heading">溫馨時刻</p>
       </div>
 
       <div class="gallery-slider-wrapper">
@@ -867,7 +870,7 @@
     <section id="rsvp">
       <div class="section-title">
         <h2>RSVP</h2>
-        <p>出席回函</p>
+        <p class="sub-heading">出席回函</p>
       </div>
 
       <div class="form-container" id="formContainer">
@@ -878,7 +881,7 @@
           <!-- Guest Name -->
           <div class="form-group">
             <label class="form-label" for="entry_395874548">
-              姓名 NAME *
+              姓名 Name *
             </label>
             <input type="text" id="entry_395874548" name="entry.395874548" class="form-control" placeholder="請輸入您的姓名 / Full Name" required>
           </div>
@@ -886,7 +889,7 @@
           <!-- Relationship -->
           <div class="form-group">
             <label class="form-label" for="entry_163538105">
-              與新人關係 RELATIONSHIP WITH COUPLE *
+              與新人關係 Relationship With Couple *
             </label>
             <select id="entry_163538105" name="entry.163538105" class="form-control" required>
               <option value="" disabled selected>請選擇關係 / Select Relationship</option>
@@ -900,7 +903,7 @@
           <!-- Ceremony Attendance -->
           <div class="form-group">
             <label class="form-label" for="entry_1976289255">
-              會否出席薄扶林伯大尼教堂證婚儀式 WILL YOU ATTEND THE WEDDING CEREMONY AT BETHANIE CHAPEL *
+              會否出席薄扶林伯大尼教堂證婚儀式 Will You Attend The Wedding Ceremony At Bethanie Chapel *
             </label>
             <select id="entry_1976289255" name="entry.1976289255" class="form-control" required>
               <option value="" disabled selected>請選擇出席意願 / Select Attendance</option>
@@ -914,7 +917,7 @@
             <div class="accordion">
               <div class="accordion-item">
                 <button type="button" class="accordion-header" onclick="toggleAccordion(this)">
-                  <span><i class="fa-solid fa-utensils" style="margin-right: 8px;"></i> 檢視晚宴菜單 VIEW DINNER MENU</span>
+                  <span><i class="fa-solid fa-utensils" style="margin-right: 8px;"></i> 檢視晚宴菜單 View Menu</span>
                   <i class="fa-solid fa-chevron-down"></i>
                 </button>
                 <div class="accordion-content">
